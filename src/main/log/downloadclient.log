@@ -21,3 +21,26 @@
 1588093318535: downloadFile() errorABORTED: Unable to acquire the image file-10M
 1588093318579: The downloadFile() method did not complete
 1588093505005: downloadFile() has been completed!
+1588095462777: downloadFile() has been completed!
+1588095841781: error on write to byte array stream
+1588095841805: downloadFile() errorCANCELLED: Failed to read message.
+1588095860477: error on write to byte array stream
+1588095860510: downloadFile() errorCANCELLED: Failed to read message.
+1588095897479: error on write to byte array stream
+1588095897502: downloadFile() errorCANCELLED: Failed to read message.
+1588096155088: error on write to byte array stream
+1588096155150: downloadFile() errorCANCELLED: Failed to read message.
+1588096338707: error on write to byte array stream
+1588096338758: downloadFile() errorCANCELLED: Failed to read message.
+1588096505903: error on write to byte array stream
+1588096505923: The downloadFile() method did not complete
+1588096553449: error on write to byte array stream
+1588096785066: downloadFile() has been completed!
+1588096898159: downloadFile() has been completed!
+1588096931496: downloadFile() has been completed!
+1588096963660: downloadFile() has been completed!
+1588097083108: downloadFile() has been completed!
+1588097154107: downloadFile() has been completed!
+1588097255357: downloadFile() has been completed!
+1588097601094: downloadFile() has been completed!
+1588097623887: downloadFile() has been completed!

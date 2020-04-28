@@ -8,9 +8,7 @@ import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -50,16 +48,17 @@ public class FileDownloadClient {
     }
 
     public ByteArrayOutputStream downloadFile(String fileName) {
-
-        final ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        final ByteArrayOutputStream bos = new ByteArrayOutputStream();
         final CountDownLatch finishLatch = new CountDownLatch(1);
         final AtomicBoolean completed = new AtomicBoolean(false);
 
         StreamObserver<Chunk> streamObserver = new StreamObserver<Chunk>() {
             @Override
             public void onNext(Chunk dataChunk) {
+
                 try {
-                    baos.write(dataChunk.getContent().toByteArray());
+
+                    bos.write(dataChunk.getContent().toByteArray());
                 } catch (IOException e) {
                     logger.info("error on write to byte array stream");
                     onError(e);
@@ -100,7 +99,7 @@ public class FileDownloadClient {
             e.getMessage();
         }
 
-        return baos;
+        return bos;
     }
 
 
@@ -109,7 +108,8 @@ public class FileDownloadClient {
         int chunkSize = Integer.parseInt("100");
         FileDownloadClient client = new FileDownloadClient(hostname, 8980);
         Date start = new Date();
-        client.downloadFile("file-10M");
+        ByteArrayOutputStream bos = client.downloadFile("file-10M");
+        bos.writeTo(new FileOutputStream(new File("src/main/resources/test.txt")));
         Date end = new Date();
         float diff = end.getTime() - start.getTime();
         System.out.println(String.valueOf(diff / 1000) + "s");
